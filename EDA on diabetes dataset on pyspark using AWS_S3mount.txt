@@ -1,0 +1,18 @@
+Databricks:it is a company founded by apache spark,the samename also referred to the data analystics platform that the company created.
+Before starting the process create an account in databricksfree edition,also create an AWSfreetier account to get S3bucket for further process..
+
+step1: a)create AWS  IAM user for the root account and  generate AWS ACCESS_KEY& SECRET_KEY,then w'll get user_creditionals.csv file download it.
+       b)create a S3bucket with name(diabetesprediction) and upload the csvfile(diabetes.csv).
+
+step2: a)create a cluster a for notebook,upload the file before the cluster is running..
+       b)as cluster is ready then create a notebook to perform the further analysis.
+
+step3: a)After checking the contents in filestore.we can see that the newuser_credistionals.csv is in the file store .
+         display(dbutils.fs.ls("/FileStore/tables"))
+        b)import libraries pyspark.sql.functions has the functions of pyspark,urllib will handling urls.
+        c)next,lets read the csv.file with AWSkeys to databricks.we specify the file type to be csv.indicate that the file has row as theheader and comma has the delimiter.then the path of the csv file was passed in to load the file.
+        d)After getting the Accesskeyand secretkey.its time to mount s3bucket!we can mount the bucket bypassing in the s3 url and the desired mount name to dbutils.fs.mount().itreturns true.,if the bucket is mounted succesfully..
+step4: a)read the dataset in csv format from s3 to databricks, here we have set a delimiter to be comma,indicate that the firstrow is the header,anad ask spark to infer the schema
+       b)and perform all the that necessary for the dataanlaysis and perform predictive analysis.
+
+step5:save sparkdataframe to s3 bucket:we can save the dataframe directly to the mountes s3 bucket.
